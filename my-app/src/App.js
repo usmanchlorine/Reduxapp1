@@ -5,6 +5,7 @@ import { useSelector,useDispatch} from 'react-redux';
 function App() {
   const dispatch=useDispatch()
   const boolVal=useSelector((state)=>state)
+  
   return (
     <>
     <div className="p-3">
@@ -12,7 +13,9 @@ function App() {
     <button className='btn btn-primary 'onClick={()=>{dispatch(incrementvalue())}}>increment number</button>
     <h1>{boolVal.boolval.value}</h1>
     <h1>{boolVal.boolval.num}</h1>
+    {console.log(boolVal)}
     </div>
+    
     </>
   );
 }

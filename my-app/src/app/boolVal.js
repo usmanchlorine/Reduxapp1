@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 const changeTrue='ChangeTrue'
 const changeFalse='changeFalse'
-export function changeVal(val) { ///actions 
+const incrementchange='increment';
+export function changeVal(val) { ///actions  function takes the current value and return a type for that
     if (val==='False'){
       return {
         type: changeTrue,
@@ -16,9 +17,9 @@ export function changeVal(val) { ///actions
   
   }
 
-export function incrementvalue(){
+export function incrementvalue(){ ///actions  function takes the current value and return a type for that
   return{
-    type: 'increment',
+    type: incrementchange,
   }
 }
 
@@ -28,20 +29,25 @@ const defaultval={
 }
 
 
-function boolval(state=defaultval,action){ /// reducer
+function boolval(state=defaultval,action){ /// reducer of changing the value takes the current state and action based on action reduce the state 
     switch (action.type) {
         case changeTrue: /// if action.type === changetrue 
           return {
             ...state,  /// every property and value true return 
-            value:'True'
+            value:'True',
           }
         
         case changeFalse: /// if action.type === changetrue 
         return {
           ...state,  /// every property and value true return 
-          value:'False'
+          value:'False',
         }
-          
+        
+        case incrementchange:
+          return {
+            ...state,
+            num:state.num+1
+          }
           
         default:
           return state; // why this ? 
@@ -49,24 +55,24 @@ function boolval(state=defaultval,action){ /// reducer
     
 }
 
-function  increment_value(state=defaultval,action){
-  console.log(action.type)
-  switch(action.type){
-    case 'increment':
+// // function  increment_value(state=defaultval,action){ /// why it is not changing the state of that num
+//   console.log(action.type)
+//   switch(action.type){
+//     case 'increment':
       
-      return {
-        ...state,
-        num:'100'
-      }
+//       return {
+//         ...state,
+//         num:state.num+1
+//       }
   
-    default:
-        return state;
+//     default:
+//         return state;
 
 
-  }
+//   }
 
-}
+// }
 
-const boolApp=combineReducers({boolval,increment_value})
+const boolApp=combineReducers({boolval})
 
 export default boolApp;

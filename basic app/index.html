@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        width: 30vw;
+        height: 30vh;
+        background-color:aquamarine ;
+        margin-top:-1000px;
+        position:absolute;
+        transition: all 0.5s ease;
+       
+    }
+
+    .move{
+        margin-top: 0px;
+        
+    }
+</style>
+<body>
+    <div class="box" id="box" ><button id="close">close</button></div>
+    
+    <button class="search" id="search"> search</button>
+    <script>
+       
+    const elementbox=document.getElementById('box')
+    const elementclosebutton=document.getElementById('close')
+    const elementbutton=document.getElementById('search')
+    elementbutton.addEventListener('click', function(){
+        elementbox.classList.add('move');
+    })
+
+    elementclosebutton.addEventListener('click', function(){
+        elementbox.classList.remove('move');
+    })
+    
+  
+   
+    
+
+    </script>
+</body>
+</html>
